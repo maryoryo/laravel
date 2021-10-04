@@ -134,34 +134,27 @@
 {{-- hello from dot install --}}
 
 
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-    <div class="container">
-        <h1>My BBS</h1>
+<x-layout>
+    <x-slot name="title">
+        My BBS
+    </x-slot>
+    <h1>My BBS</h1>
 
-        <ul>
-            {{-- @foreach ($posts as $post)
-                <li>{{$post}}</li>
-            @endforeach --}}
+    <ul>
+        {{-- @foreach ($posts as $post)
+            <li>{{$post}}</li>
+        @endforeach --}}
 
-            @forelse ($posts as $index => $post)
-                <li>
-                    <a href="/posts/{{ $index }}">
-                        {{$post}}
-                    </a>
-                </li>
-            @empty
-                <li>NO post</li>
-            @endforelse
-        </ul>
-    </div>
-</body>
-</html>
+        @forelse ($posts as $post)
+            <li>
+                <a href="{{ route('posts.show', $post) }}">
+                    {{$post->title}}
+                </a>
+            </li>
+        @empty
+            <li>NO post</li>
+        @endforelse
+    </ul>
+</x-layout>
+
+
