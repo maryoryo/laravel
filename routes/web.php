@@ -24,5 +24,12 @@ Route::get('/', [PostController::class, 'index'])
 // Route::get('/posts/2', [PostController::class, 'index']);
 
 Route::get('/posts/{post}', [PostController::class, 'show'])
-    ->name('posts.show');
+    ->name('posts.show')
+    ->where('post', '[0-9]+');
+
+Route::get('/posts/create', [PostController::class, 'create'])
+    ->name('posts.create');
+
+Route::get('/posts/store', [PostController::class, 'store'])
+    ->name('posts.store');
 
